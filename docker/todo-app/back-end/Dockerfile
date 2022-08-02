@@ -2,11 +2,10 @@ FROM node:16-alpine3.15
 
 WORKDIR /app/src
 
-COPY ./package.json ./
+ADD ./node_modules.tar.gz .
 
-RUN npm install
-
-COPY . .
+COPY ./package.json .
+COPY ./src .
 
 EXPOSE 3001
 

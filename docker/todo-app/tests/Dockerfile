@@ -2,13 +2,11 @@ FROM mjgargani/puppeteer:trybe1.0
 
 WORKDIR /app/src
 
-COPY ./package.json ./
+ADD ./node_modules.tar.gz .
 
-RUN npm install
-
-COPY . .
-
-EXPOSE 3000
+COPY ./package.json .
+COPY ./e2e .
+COPY ./jest.config.js .
 
 ENTRYPOINT [ "npm" ]
 CMD [ "test" ]
