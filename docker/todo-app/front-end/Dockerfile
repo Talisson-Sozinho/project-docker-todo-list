@@ -1,11 +1,13 @@
 FROM node:16-alpine3.15
 
-WORKDIR /app/src
+WORKDIR /app
 
 ADD ./node_modules.tar.gz .
 
+COPY ./src/. ./src
 COPY ./package.json .
-COPY ./src .
+COPY ./package-lock.json .
+COPY ./public/. ./public
 COPY ./.env .
 
 EXPOSE 3000
